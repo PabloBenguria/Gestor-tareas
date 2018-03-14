@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="tareas-app">
+    <h1 class="display-4 text-center">- Tareas -</h1>
+    <div class="table-responsive-sm">
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th>Tarea</th>
+            <th>Estado</th>
+            <th>Fecha estimada</th>
+            <th>Fecha de finalización</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tarea of tareas" class="{{ tarea.estado }}">
+            <td>{{ tarea.nombre }}</td>
+            <td>{{ tarea.estado }}</td>
+            <td>{{ tarea.fechaEstimadaFin | date:'dd/MM/yyyy' }}</td>
+            <td>{{ tarea.fechaFin | date:'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="btn btn-primary" routerLink="/tareas/crear">Crear tarea</button>
+  </div>
+</div>

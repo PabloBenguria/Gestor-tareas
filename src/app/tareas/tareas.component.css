@@ -1,0 +1,11 @@
+.tareas-app{
+	margin-top: 20px;
+}
+
+.TERMINADA{
+	background-color: #28a745; 
+}
+
+.fueraPlazo{
+	background-color: #dc3545;
+}
