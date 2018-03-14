@@ -15,9 +15,8 @@ const httpOptions = {
 export class TareaService {
 
 	private tareasUrl = Routes.API_ENDPOINT + '/tareas';
-  private tareasCrearUrl = Routes.API_ENDPOINT + '/tareas/crear';
 	private tareas: Tarea[];
-  private tarea = new Tarea();
+  private tarea: Tarea;
 
   constructor(
   	private http: HttpClient
@@ -31,8 +30,8 @@ export class TareaService {
       );
   }
 
-  addTarea (tarea: Tarea): Observable<Tarea> {
-    return this.http.post<Tarea>(this.tareasCrearUrl, tarea)
+  addTarea (tarea: any): Observable<any> {
+    return this.http.post(this.tareasUrl, tarea)
       .pipe(
         tap(tarea => console.log('Tarea creada con éxito.')),
         catchError(this.handleError('postTareas', []))

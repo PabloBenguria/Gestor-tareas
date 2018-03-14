@@ -1,13 +1,13 @@
 <div class="container">
   <h1 class="display-4 text-center">- Crear Tarea -</h1>
-  <form (ngSubmit)="addTarea()" #tareasCrear="ngForm">
+  <form (ngSubmit)="addTarea(tareaForm.value)" #tareaForm="ngForm">
     <div class="form-group">
       <label for="tarea">Tarea</label>
-      <input type="text" [(ngModel)]="tarea.nombre" name="nombre" class="form-control" id="tarea">
+      <input type="text" [(ngModel)]="tarea.nombre" name="nombre" #nombre class="form-control" id="tarea">
     </div>
     <div class="form-group">
       <label for="fecha-estimada">Fecha estimada de finalización</label>
-      <input class="form-control" type="datetime-local" value="2018-12-31T00:00:00" id="fecha-estimada">
+      <input class="form-control" type="datetime-local" [(ngModel)]="tarea.fechaFin" name="fechaFin" #fechaFin value="2018-12-31T00:00:00" id="fecha-estimada">
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>
   </form>

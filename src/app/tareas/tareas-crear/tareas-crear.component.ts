@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Tarea } from '../../models/tarea';
 import { TareaService } from '../../services/tarea.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-tareas-crear',
@@ -10,17 +12,28 @@ import { TareaService } from '../../services/tarea.service';
 })
 export class TareasCrearComponent implements OnInit {
 
-  tarea: Tarea;
+  tarea: any = {};
 
-  constructor(private tareaService: TareaService) { }
-
-  ngOnInit() {
-  	this.addTarea();
+  constructor(private tareaService: TareaService,
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
-  addTarea(): void {
-    this.tareaService.addTarea(this.tarea)
-    .subscribe(tarea => this.tarea = tarea);
+  ngOnInit() {
+
+  }
+
+  gotoList() {
+    this.router.navigate(['/tareas']);
+  }
+
+  addTarea(form: NgForm) {
+    form.idUsuario = 1;
+    form.estado = 'Pendiente';
+    this.tareaService.addTarea(form)
+    .subscribe(result => {
+      this.gotoList();
+    }, error => console.error(error));
   }
 
 }
